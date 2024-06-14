@@ -23,3 +23,10 @@ func (r *Auth) CreateUser(user todo_go.User) (int, error) {
 	}
 	return id, nil
 }
+
+func (r *Auth) GetUser(username, password string) (todo_go.User, error) {
+	var user todo_go.User
+	query := fmt.Sprintf("SELECT * FROM users WHERE username=$1 AND password_hash=$2")
+	err := r.db.Get(&user, query, username, password)
+	return user, err
+}
