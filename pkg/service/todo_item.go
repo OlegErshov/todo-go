@@ -30,3 +30,11 @@ func (s *TodoItemService) GetAll(userId, listId int) ([]todo_go.TodoItem, error)
 func (s *TodoItemService) GetById(userId, listId int) (todo_go.TodoItem, error) {
 	return s.itemRepo.GetById(userId, listId)
 }
+
+func (s *TodoItemService) Delete(userId, itemId int) error {
+	return s.itemRepo.Delete(userId, itemId)
+}
+
+func (s *TodoItemService) Update(userId, itemId int, input todo_go.UpdateItemInput) error {
+	return s.itemRepo.Update(userId, itemId, input)
+}
